@@ -5,8 +5,8 @@ var resultsContainer=document.querySelector('.results-container');
 var searchHistory=document.querySelector('.search-history');
 var displayCity=document.getElementById('city')
 var currentDate=document.getElementById('current-date');
-var weatherToday=document.querySelector('.weather-today')
-
+var weatherToday=document.querySelector('.weather')
+var weatherIcon= 'https://api.openweathermap.org/img/w/{icon}.png'
 var searchSubmitHandler = function(event){
     event.preventDefault();
     var city=cityInput.value.trim();
@@ -61,23 +61,38 @@ var displayForecast=function(data){
     var listData=data.list
     console.log(listData);
     console.log(listData.length)
-    for (var i = 0; i < listData.length; i+=7) {
+    for (var i = 0,  id=0; i < listData.length,  id<6; i+=6, id++) {
         
-    
+            var dayOfWeek=document.createElement("p");
+            var weekday=dayjs().add(i*4, 'h' ).format('dddd');
+            console.log(dayjs().add(i*4, 'h' ));
+            dayOfWeek.textContent=weekday;
+            dayOfWeek.setAttribute('style','text-weight: bolder')
             var temperatureEl=document.createElement("p");
-            temperatureEl.textContent='Temp. '+ listData[i].main.temp;
+            temperatureEl.textContent='Temp. '+ listData[i].main.temp +'℉';
             var cloudsEl=document.createElement("p");
-            cloudsEl.textContent=listData[i].weather[0].main;
+            var imgIcon=document.createElement('img');
+            var icon=listData[i].weather[0].icon;
+            var weatherIcon= 'https://api.openweathermap.org/img/w/'+icon+'.png';
             var humidityEl=document.createElement("p");
             humidityEl.textContent='Humidity: '+listData[i].main.humidity + '%';
             console.log(listData[i].main.temp);
+            var windEl=document.createElement('p');
+            windEl.textContent='Wind: '+listData[i].wind.speed + 'MPH';
             var weatherCard=document.createElement('div');
-            weatherCard.setAttribute('id', 'weather-'+i);
+
+            imgIcon.setAttribute('src', weatherIcon)
+            weatherCard.setAttribute('id', 'weather-'+id);
             weatherCard.setAttribute('class', 'weather-card  col-2 ');
+            
+            cloudsEl.appendChild(imgIcon);
+            weatherCard.appendChild(dayOfWeek)
             weatherCard.appendChild(cloudsEl);
             weatherCard.appendChild(temperatureEl)
             weatherCard.appendChild(humidityEl)
-            resultsContainer.appendChild(weatherCard)
+            weatherCard.appendChild(windEl)
+            weatherToday.appendChild(weatherCard)
+           
 
             //var repoEl = document.createElement('a');
         /*repoEl.classList = 'list-item flex-row justify-space-between align-center';
