@@ -3,7 +3,8 @@
 .weather-card{
     border: solid black 2px;
     padding: 10px;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     background-color: navy;
     color: aliceblue;
 }
@@ -26,8 +27,19 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-#weather-0{
-    width:90%;
+#weather-current{
+    width:100%;
     background-color: aliceblue;
     color: black;
+}
+ 
+il{
+    background-color: rgb(85, 85, 181);
+    padding-top: 5px;
+    padding-bottom: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin:5px;
+    border-radius: 5px;
+
 }
