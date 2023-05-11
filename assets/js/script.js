@@ -8,22 +8,24 @@ var displayCity=document.getElementById('city')
 
 var currentDate=document.getElementById('current-date');
 var weatherToday=document.querySelector('.weather')
-var search=[];
+var searchEl=document.querySelectorAll('.saved-cities');
 
 function displaySearchHistory(){
     
     var historyList=document.createElement('ul');
+    
     searchHistory.appendChild(historyList)
     
     var search=JSON.parse(localStorage.getItem('cities'))
     if (search!==null){
     for (var i=0; i< search.length; i++){
         
-       var searchEl=document.createElement('il');
+       var searchEl=document.createElement('li');
        searchEl.textContent=search[i];
-       searchEl.setAttribute('id', 'search'+i);
+       searchEl.setAttribute('id', 'search'+i)
+       searchEl.setAttribute( 'class', 'saved-cities');
        historyList.appendChild(searchEl);
-       return search;
+       
     } 
 
  }
@@ -36,16 +38,26 @@ var searchSubmitHandler = function(event){
         
         console.log(city);
         var citySaved=city;
-        search.length=search.length + search.push(citySaved);
         
+        //pull data from storage
+       var search= JSON.parse(localStorage.getItem('cities'));
+       if (search==null){
+        search=[]
+        search.push(citySaved);
         localStorage.setItem('cities', JSON.stringify(search));
 
+       }else{
+        search.push(citySaved);
+        localStorage.setItem('cities', JSON.stringify(search));
+        
         console.log('saved to memory ' + search);
-       // displayCity.textContent=city;
+       }
+      
      getCityCoordinates(city);
     } else{
         alert('Please enter a valid city name!')
     }
+    
 };
 
 
@@ -167,8 +179,18 @@ var futureForecast=function(data){
 
     
 displaySearchHistory();
-//current date
-//currentDate.textContent=dayjs().format('MMM DD, YYYY');
-//console.log(currentDate);
 
-searchBtn.addEventListener('click', searchSubmitHandler);
+
+searchHistory.addEventListener('click', function(){
+   // eventPreventDefault();
+ var city=(event.target.textContent);
+ //location.reload();
+ getCityCoordinates(city)
+ 
+}, {once:true})
+    
+
+
+
+searchBtn.addEventListener('click', searchSubmitHandler, {once:true});
+

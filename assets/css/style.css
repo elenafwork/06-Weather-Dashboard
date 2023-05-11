@@ -1,4 +1,9 @@
-
+.header{
+    background-color: rgb(29, 29, 72);
+    font-weight: bolder;
+    color: aliceblue;
+    font-size: 2em;
+}
 
 .weather-card{
     border: solid black 2px;
@@ -32,14 +37,18 @@
     background-color: aliceblue;
     color: black;
 }
- 
-il{
+
+ul{
+    padding:10px;
+
+}
+li{
     background-color: rgb(85, 85, 181);
+    color:aliceblue;
     padding-top: 5px;
     padding-bottom: 7px;
-    padding-left: 15px;
-    padding-right: 15px;
+    text-align: center;
     margin:5px;
     border-radius: 5px;
-
+    list-style: none;
 }
