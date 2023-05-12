@@ -7,7 +7,7 @@ var currentContainer=document.querySelector('.current-forecast')
 var displayCity=document.getElementById('city')
 
 var currentDate=document.getElementById('current-date');
-var weatherToday=document.querySelector('.weather')
+var weatherToday=document.querySelector('.custom-weather')
 var searchEl=document.querySelectorAll('.saved-cities');
 
 function displaySearchHistory(){
@@ -141,7 +141,7 @@ var futureForecast=function(data){
     var listData=data.list
     console.log(listData);
     console.log(listData.length)
-    for (var i = 1,  id=1; i < listData.length,  id<6; i+=6, id++) {
+    for (var i = 7,  id=1; i < listData.length,  id<6; i+=6, id++) {
         
             var dayOfWeek=document.createElement("p");
             var weekday=dayjs().add(i*4, 'h' ).format('dddd');
