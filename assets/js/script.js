@@ -89,7 +89,7 @@ var getWeatherForecast=function(data){
     var latitude=data[0].lat;
     var longitude=data[0].lon;
         console.log(latitude, longitude);
-    var cityUrl='http://api.openweathermap.org/data/2.5/forecast?lat=' + latitude+ '&lon='+longitude+ '&appid='+ APIkey +'&units=imperial';
+    var cityUrl='https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude+ '&lon='+longitude+ '&appid='+ APIkey +'&units=imperial';
     console.log(cityUrl);
     fetch(cityUrl)
     .then(function(response) {
