@@ -63,7 +63,7 @@ var searchSubmitHandler = function(event){
 
 
 var getCityCoordinates=function(city){
-    var apiUrl='http://api.openweathermap.org/geo/1.0/direct?q='+city+'&limit=&appid=' + APIkey;
+    var apiUrl='https://api.openweathermap.org/geo/1.0/direct?q='+city+'&limit=&appid=' + APIkey;
     console.log(apiUrl);
     fetch(apiUrl)
     .then(function(response){
