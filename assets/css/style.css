@@ -1,3 +1,6 @@
+body{
+    background-color: aliceblue;
+}
 .header{
     background-color: rgb(29, 29, 72);
     font-weight: bolder;
@@ -23,14 +26,13 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.weather{
-    background-image: url("/assets/images/google-img.png");
+.custom-weather{
+    
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     flex-direction: row;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    
 }
 #weather-current{
     width:100%;
